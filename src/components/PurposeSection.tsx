@@ -1,7 +1,8 @@
 import React from 'react';
 import { Quote, HeartHandshake, Sparkles, Sprout } from 'lucide-react';
 
-const COMMUNITY_IMAGE_PATH = '/src/assets/images/community_sustainability_food_1793897675155.jpg';
+// Imagen de comunidad y sostenibilidad en public/assets/
+const COMMUNITY_IMAGE_PATH = '/assets/comunidad_sostenibilidad.jpg';
 
 export const PurposeSection: React.FC = () => {
   return (

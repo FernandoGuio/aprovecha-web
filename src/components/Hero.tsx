@@ -1,8 +1,8 @@
 import React from 'react';
 import { ArrowRight, Sparkles, Store, ShoppingBag, ShieldCheck } from 'lucide-react';
 
-// Exact generated image path from batch generation
-const HERO_IMAGE_PATH = '/src/assets/images/hero_neighborhood_market_1793897674615.jpg';
+// Imagen oficial de tienda de barrio en public/assets/
+const HERO_IMAGE_PATH = '/assets/hero_tienda_barrio.jpg';
 
 export const Hero: React.FC = () => {
   return (

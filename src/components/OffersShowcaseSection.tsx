@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Clock, Store, Tag, Sparkles, Info, ShoppingBag } from 'lucide-react';
 import { OfferProduct, ReservationModal } from './ReservationModal';
 
-// High-fidelity image assets generated
-const DAIRY_IMAGE = '/src/assets/images/dairy_cheese_market_1793897675212.jpg';
-const BAKERY_IMAGE = '/src/assets/images/bakery_bread_artisan_1793897676116.jpg';
-const FRUITS_IMAGE = '/src/assets/images/fresh_fruits_market_1793897676556.jpg';
+// Imágenes oficiales del catálogo en public/assets/
+const DAIRY_IMAGE = '/assets/lacteos_quesos.jpg';
+const BAKERY_IMAGE = '/assets/panaderia_artesanal.jpg';
+const FRUITS_IMAGE = '/assets/frutas_frescas.jpg';
 
 const SAMPLE_PRODUCTS: OfferProduct[] = [
   {
