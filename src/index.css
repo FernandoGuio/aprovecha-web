@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-green: #00603F;
+  --color-brand-green-dark: #004d32;
+  --color-brand-green-light: #0d7a52;
+  --color-brand-orange: #FF9217;
+  --color-brand-orange-hover: #e67f0b;
+  --color-brand-orange-light: #fff2e3;
+  --color-brand-cream: #FFFBED;
+  --color-brand-cream-card: #FAF6E8;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+html {
+  font-family: var(--font-sans);
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background-color: rgba(255, 146, 23, 0.25);
+  color: #00603F;
+}

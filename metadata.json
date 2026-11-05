@@ -1,0 +1,6 @@
+{
+  "name": "Aprovecha - Dale una segunda oportunidad a los alimentos",
+  "description": "Plataforma que conecta tiendas de barrio con compradores para comercializar alimentos próximos a su fecha de vencimiento a precios especiales.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
