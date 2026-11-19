@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Store,
   ShoppingBag,
@@ -11,78 +11,106 @@ import {
   BookmarkCheck,
   Bike,
   ArrowRight,
+  MessageSquareHeart,
+  Headphones,
 } from 'lucide-react';
 
-export const HowItWorksSection: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'tenderos' | 'compradores'>('compradores');
+interface HowItWorksSectionProps {
+  preferredTab?: 'tenderos' | 'compradores';
+}
+
+export const HowItWorksSection: React.FC<HowItWorksSectionProps> = ({
+  preferredTab = 'tenderos',
+}) => {
+  const [activeTab, setActiveTab] = useState<'tenderos' | 'compradores'>(preferredTab);
+
+  useEffect(() => {
+    setActiveTab(preferredTab);
+  }, [preferredTab]);
 
   const tenderoSteps = [
     {
       step: '01',
-      icon: UserPlus,
-      title: 'Registro del establecimiento',
+      icon: MessageSquareHeart,
+      title: 'Conocemos tu negocio',
       description:
-        'El tendero se registra de forma sencilla en Aprovecha proporcionando los datos básicos de su tienda de barrio, dirección y horarios de atención.',
-      detail: 'Sin trámites complejos · Verificación ágil',
+        'Visitamos tu tienda o nos ponemos en contacto contigo para escuchar tus necesidades e identificar oportunidades de venta.',
+      detail: 'Cercanía desde el primer día',
     },
     {
       step: '02',
-      icon: Upload,
-      title: 'Publicación de productos',
+      icon: UserPlus,
+      title: 'Te presentamos Aprovecha y te ayudamos con el registro',
       description:
-        'Carga los productos próximos a su fecha de vencimiento indicando nombre, cantidad disponible, precio habitual, precio especial, foto y fecha límite de consumo.',
-      detail: 'Fotos claras · Control total de precios',
+        'Te mostramos cómo funciona la plataforma y realizamos juntos el registro de tu establecimiento de manera guiada.',
+      detail: 'Vinculación sencilla y asistida',
     },
     {
       step: '03',
-      icon: Radio,
-      title: 'Difusión a vecinos cercanos',
+      icon: Upload,
+      title: 'Aprendes a publicar tus productos',
       description:
-        'La plataforma muestra automáticamente las ofertas a los compradores ubicados en un radio máximo de hasta 2 kilómetros del establecimiento.',
-      detail: 'Visibilidad hiperlocal · Clientes del barrio',
+        'Recibes orientación inicial gratuita para cargar fotografías, precios favorables, cantidades y fechas de consumo.',
+      detail: 'Capacitación inicial gratuita',
     },
     {
       step: '04',
-      icon: PackageCheck,
-      title: 'Gestión de reservas y entrega',
+      icon: Radio,
+      title: 'Tus ofertas son consultadas por compradores cercanos',
       description:
-        'Recibe las notificaciones de reserva en tiempo real y coordina con el comprador la entrega en mostrador o el envío a domicilio por valor máximo de $2.000 COP.',
-      detail: 'Ingresos recuperados · Cero producto perdido',
+        'Hogares, restaurantes y vecinos de tu sector descubren tus productos disponibles y realizan reservas desde la plataforma.',
+      detail: 'Visibilidad en tu vecindario',
+    },
+    {
+      step: '05',
+      icon: Headphones,
+      title: 'Accedes a servicios adicionales de asesoría',
+      description:
+        'Según el plan de servicio que elijas, puedes contar con seguimiento remoto y recomendaciones para seguir comercializando mejor.',
+      detail: 'Acompañamiento según tu plan',
     },
   ];
 
   const compradorSteps = [
     {
       step: '01',
-      icon: MapPin,
-      title: 'Consulta ofertas cercanas',
+      icon: UserPlus,
+      title: 'Registrarse',
       description:
-        'Accede a la plataforma y explora las ofertas disponibles en las tiendas, panaderías y minimarkets ubicados cerca de su casa o lugar de trabajo.',
-      detail: 'A menos de 2 km · Ahorro inmediato',
+        'Creas tu cuenta de comprador en pocos minutos para comenzar a descubrir las tiendas de barrio disponibles en tu zona.',
+      detail: 'Acceso rápido y sencillo',
     },
     {
       step: '02',
-      icon: Eye,
-      title: 'Revisa detalles y fechas',
+      icon: MapPin,
+      title: 'Consultar ofertas cercanas',
       description:
-        'Comprueba la información transparente del producto: fotografías reales, precios antes/después, cantidad en existencia y la fecha exacta de vencimiento.',
-      detail: '100% productos aptos · Información clara',
+        'Exploras los productos publicados por tiendas, panaderías y minimarkets ubicados cerca de tu casa o negocio.',
+      detail: 'Comercios de proximidad',
     },
     {
       step: '03',
-      icon: BookmarkCheck,
-      title: 'Selecciona y reserva',
+      icon: Eye,
+      title: 'Revisar productos y establecimientos',
       description:
-        'Elige los alimentos que necesita para el día o la semana y realiza la reserva con unos pocos clics para asegurar el descuento especial.',
-      detail: 'Reserva ágil · Descuentos de hasta el 50%',
+        'Verificas fotografías, precios habituales y especiales, cantidades disponibles y fechas de vencimiento dentro del periodo apto.',
+      detail: 'Información clara y transparente',
     },
     {
       step: '04',
-      icon: Bike,
-      title: 'Recoge o pide a domicilio',
+      icon: BookmarkCheck,
+      title: 'Seleccionar y reservar o comprar',
       description:
-        'Decide si pasar a recoger su pedido caminando por la tienda de barrio o solicitar domicilio por un valor máximo previsto de tan solo $2.000 COP.',
-      detail: 'Recogida gratuita o domicilio económico',
+        'Eliges los alimentos y productos que deseas aprovechar y realizas tu reserva para asegurar el precio favorable.',
+      detail: 'Ahorro práctico y seguro',
+    },
+    {
+      step: '05',
+      icon: Bike,
+      title: 'Recoger o recibir a domicilio',
+      description:
+        'Pasas a recoger tu pedido directamente en la tienda o solicitas el envío cuando el establecimiento tenga servicio a domicilio.',
+      detail: 'Recogida o entrega en tu barrio',
     },
   ];
 
@@ -95,30 +123,18 @@ export const HowItWorksSection: React.FC = () => {
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-12">
           <p className="text-xs sm:text-sm font-bold tracking-wider uppercase text-[#00603F] mb-2">
-            Paso a paso sencillo
+            Proceso paso a paso
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#00603F] tracking-tight mb-4">
             ¿Cómo funciona Aprovecha?
           </h2>
           <p className="text-base sm:text-lg text-neutral-600 font-normal">
-            Una experiencia diseñada para ser intuitiva, rápida y accesible tanto para quien vende
-            como para quien compra.
+            Un recorrido claro y pensado tanto para acompañar a los comerciantes como para facilitar
+            el ahorro de los compradores.
           </p>
 
-          {/* Interactive Mode Switcher (Tab buttons) */}
+          {/* Interactive Mode Switcher */}
           <div className="mt-8 inline-flex p-1.5 bg-[#FFFBED] rounded-2xl border border-[#00603F]/15 shadow-inner">
-            <button
-              type="button"
-              onClick={() => setActiveTab('compradores')}
-              className={`flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-bold transition-all cursor-pointer ${
-                activeTab === 'compradores'
-                  ? 'bg-[#FF9217] text-white shadow-sm'
-                  : 'text-neutral-700 hover:text-[#00603F]'
-              }`}
-            >
-              <ShoppingBag className="w-4 h-4" />
-              <span>Para los Compradores</span>
-            </button>
             <button
               type="button"
               onClick={() => setActiveTab('tenderos')}
@@ -131,23 +147,35 @@ export const HowItWorksSection: React.FC = () => {
               <Store className="w-4 h-4" />
               <span>Para los Tenderos</span>
             </button>
+            <button
+              type="button"
+              onClick={() => setActiveTab('compradores')}
+              className={`flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-bold transition-all cursor-pointer ${
+                activeTab === 'compradores'
+                  ? 'bg-[#FF9217] text-white shadow-sm'
+                  : 'text-neutral-700 hover:text-[#00603F]'
+              }`}
+            >
+              <ShoppingBag className="w-4 h-4" />
+              <span>Para los Compradores</span>
+            </button>
           </div>
         </div>
 
-        {/* Steps Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
-          {currentSteps.map((item, index) => {
+        {/* 5-Step Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 relative">
+          {currentSteps.map((item) => {
             const Icon = item.icon;
             const isComprador = activeTab === 'compradores';
 
             return (
               <div
-                key={item.step}
-                className="bg-[#FFFBED]/60 rounded-2xl p-6 sm:p-7 border border-[#00603F]/10 hover:border-[#FF9217]/50 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group"
+                key={`${activeTab}-${item.step}`}
+                className="bg-[#FFFBED]/60 rounded-2xl p-6 border border-[#00603F]/10 hover:border-[#FF9217]/50 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group"
               >
                 <div>
                   {/* Step header with Number and Icon */}
-                  <div className="flex items-center justify-between mb-5">
+                  <div className="flex items-center justify-between mb-4">
                     <span
                       className={`text-2xl font-black tabular-nums transition-colors ${
                         isComprador ? 'text-[#FF9217]' : 'text-[#00603F]'
@@ -156,26 +184,26 @@ export const HowItWorksSection: React.FC = () => {
                       {item.step}
                     </span>
                     <div
-                      className={`w-12 h-12 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110 ${
+                      className={`w-11 h-11 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110 ${
                         isComprador
                           ? 'bg-[#FF9217]/15 text-[#FF9217]'
                           : 'bg-[#00603F]/10 text-[#00603F]'
                       }`}
                     >
-                      <Icon className="w-6 h-6" />
+                      <Icon className="w-5 h-5" />
                     </div>
                   </div>
 
-                  <h3 className="text-lg font-bold text-neutral-900 mb-2.5 leading-snug">
+                  <h3 className="text-base font-bold text-neutral-900 mb-2 leading-snug">
                     {item.title}
                   </h3>
 
-                  <p className="text-neutral-600 text-sm leading-relaxed mb-4">
+                  <p className="text-neutral-600 text-xs sm:text-sm leading-relaxed mb-4">
                     {item.description}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-[#00603F]/10 text-xs font-semibold text-neutral-500">
+                <div className="pt-3.5 border-t border-[#00603F]/10 text-[11px] font-semibold text-neutral-500">
                   {item.detail}
                 </div>
               </div>
@@ -190,32 +218,36 @@ export const HowItWorksSection: React.FC = () => {
               {activeTab === 'compradores' ? (
                 <ShoppingBag className="w-6 h-6 text-[#FF9217]" />
               ) : (
-                <Store className="w-6 h-6 text-[#FF9217]" />
+                <PackageCheck className="w-6 h-6 text-[#FF9217]" />
               )}
             </div>
             <div>
               <h4 className="text-base font-bold text-[#00603F]">
                 {activeTab === 'compradores'
-                  ? '¿Listo para encontrar ofertas en tu barrio?'
-                  : '¿Tienes una tienda o minimarket de barrio?'}
+                  ? '¿Quieres ver ejemplos de productos a precios favorables?'
+                  : '¿Quieres conocer cómo te acompaña el Aprovechólogo y qué planes existen?'}
               </h4>
               <p className="text-xs sm:text-sm text-neutral-600">
                 {activeTab === 'compradores'
-                  ? 'Revisa abajo la demostración de productos y cómo verás los descuentos.'
-                  : 'Regístrate para recibir información sobre el inicio del piloto en tu zona.'}
+                  ? 'Explora más abajo la demostración visual de ofertas en tiendas cercanas.'
+                  : 'La primera orientación es gratuita para ayudarte a dar el primer paso.'}
               </p>
             </div>
           </div>
 
           <a
-            href={activeTab === 'compradores' ? '#ofertas' : '#contacto'}
+            href={activeTab === 'compradores' ? '#ofertas' : '#aprovechologo'}
             className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold text-white transition-all whitespace-nowrap shrink-0 shadow-xs ${
               activeTab === 'compradores'
                 ? 'bg-[#FF9217] hover:bg-[#e67f0b]'
                 : 'bg-[#00603F] hover:bg-[#004d32]'
             }`}
           >
-            <span>{activeTab === 'compradores' ? 'Ver catálogo demostrativo' : 'Quiero registrar mi tienda'}</span>
+            <span>
+              {activeTab === 'compradores'
+                ? 'Ver catálogo demostrativo'
+                : 'Conocer al Aprovechólogo'}
+            </span>
             <ArrowRight className="w-4 h-4" />
           </a>
         </div>

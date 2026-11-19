@@ -2,25 +2,25 @@ import React from 'react';
 import { Store, ShoppingBag, Leaf, CheckCircle2, TrendingUp, Wallet, Globe } from 'lucide-react';
 
 export const BenefitsSection: React.FC = () => {
-  const tenderosBenefits = [
-    'Reducir pérdidas económicas y mermas por vencimiento de productos.',
-    'Comercializar productos próximos a vencer antes de que sea tarde.',
-    'Dar mayor salida y velocidad a la rotación de sus inventarios.',
-    'Llegar a nuevos compradores y familias del vecindario.',
+  const compradoresBenefits = [
+    'Encontrar productos de calidad a precios favorables para el hogar o restaurante.',
+    'Consultar establecimientos cercanos a tu ubicación en el barrio.',
+    'Conocer de forma clara las ofertas disponibles y fechas de consumo.',
+    'Contribuir activamente al aprovechamiento de alimentos y evitar desperdicios.',
   ];
 
-  const compradoresBenefits = [
-    'Ahorrar dinero de forma significativa en la canasta familiar.',
-    'Encontrar ofertas y promociones reales muy cerca de casa.',
-    'Acceder a una mayor variedad de alimentos de calidad garantizada.',
-    'Comprar de manera práctica, rápida y sin trámites complicados.',
+  const tenderosBenefits = [
+    'Dar visibilidad digital a productos de baja rotación o próximos a vencer.',
+    'Recuperar valor de artículos que podrían convertirse en pérdidas económicas.',
+    'Conectar con nuevos compradores, hogares y restaurantes cercanos.',
+    'Recibir orientación práctica a través del acompañamiento del Aprovechólogo.',
   ];
 
   const ambienteBenefits = [
-    'Reducir drásticamente el desperdicio de alimentos aptos para el consumo.',
-    'Promover el consumo responsable y hábitos de compra conscientes.',
-    'Aprovechar mejor los recursos naturales, agua y energía invertidos.',
-    'Disminuir las emisiones de gases de efecto invernadero por residuos orgánicos.',
+    'Reducir el desperdicio de alimentos aptos para el consumo.',
+    'Promover hábitos de compra y consumo responsable en la comunidad.',
+    'Aprovechar mejor los recursos invertidos en producir y distribuir alimentos.',
+    'Fomentar una economía barrial más sostenible y solidaria.',
   ];
 
   return (
@@ -30,66 +30,25 @@ export const BenefitsSection: React.FC = () => {
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
           <p className="text-xs sm:text-sm font-bold tracking-wider uppercase text-[#00603F] mb-2">
-            Impacto positivo compartido
+            Valor compartido en tu barrio
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#00603F] tracking-tight mb-4">
-            Beneficios de Aprovecha
+            Beneficios para compradores y tenderos
           </h2>
           <p className="text-base sm:text-lg text-neutral-600 font-normal">
-            Un ecosistema donde todos ganan: quien produce y vende, quien compra y disfruta, y el
-            entorno en el que vivimos.
+            Aprovecha genera valor para ambas partes: impulsa las oportunidades comerciales de las
+            tiendas y facilita precios favorables para quienes compran en el sector.
           </p>
         </div>
 
         {/* 3 Visual Blocks Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           
-          {/* Block 1: Tenderos */}
-          <div className="bg-white rounded-3xl p-8 border-2 border-[#00603F]/20 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
-            <div>
-              <div className="flex items-center justify-between mb-6">
-                <div className="w-14 h-14 rounded-2xl bg-[#00603F] text-white flex items-center justify-center shadow-md">
-                  <Store className="w-7 h-7 text-[#FF9217]" />
-                </div>
-                <div className="flex items-center gap-1.5 text-xs font-bold text-[#00603F] bg-[#00603F]/10 px-3 py-1 rounded-full">
-                  <TrendingUp className="w-3.5 h-3.5" />
-                  <span>Comercio Local</span>
-                </div>
-              </div>
-
-              <h3 className="text-2xl font-extrabold text-[#00603F] mb-3">
-                Para los Tenderos
-              </h3>
-              <p className="text-neutral-600 text-sm mb-6 leading-relaxed">
-                Transforma las pérdidas inevitables en ingresos recuperados, optimizando la gestión
-                de tu tienda de barrio.
-              </p>
-
-              <ul className="space-y-3.5">
-                {tenderosBenefits.map((benefit, idx) => (
-                  <li key={idx} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-[#00603F] shrink-0 mt-0.5" />
-                    <span className="text-sm text-neutral-700 leading-snug font-medium">
-                      {benefit}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="mt-8 pt-6 border-t border-neutral-100">
-              <span className="text-xs font-bold text-[#00603F] block">
-                Valor clave: Liquidez y cero desperdicio en estanterías
-              </span>
-            </div>
-          </div>
-
-          {/* Block 2: Compradores */}
+          {/* Block 1: Compradores (Destacado para conservar protagonismo equilibrado) */}
           <div className="bg-white rounded-3xl p-8 border-2 border-[#FF9217] shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between relative group">
             
-            {/* Top highlight ribbon */}
             <div className="absolute -top-3.5 left-8 bg-[#FF9217] text-white text-[11px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full shadow-xs">
-              Ahorro para la comunidad
+              Beneficios para compradores
             </div>
 
             <div>
@@ -99,7 +58,7 @@ export const BenefitsSection: React.FC = () => {
                 </div>
                 <div className="flex items-center gap-1.5 text-xs font-bold text-[#FF9217] bg-[#FF9217]/15 px-3 py-1 rounded-full">
                   <Wallet className="w-3.5 h-3.5" />
-                  <span>Economía Familiar</span>
+                  <span>Hogares y Restaurantes</span>
                 </div>
               </div>
 
@@ -107,8 +66,8 @@ export const BenefitsSection: React.FC = () => {
                 Para los Compradores
               </h3>
               <p className="text-neutral-600 text-sm mb-6 leading-relaxed">
-                Acceso diario a alimentos de primera necesidad con descuentos de hasta el 50%
-                directamente en el vecindario.
+                Encuentra productos a precios favorables cerca de casa, consulta las ofertas de tus
+                tiendas vecinas y compra de manera práctica.
               </p>
 
               <ul className="space-y-3.5">
@@ -125,7 +84,47 @@ export const BenefitsSection: React.FC = () => {
 
             <div className="mt-8 pt-6 border-t border-neutral-100">
               <span className="text-xs font-bold text-[#FF9217] block">
-                Valor clave: Alimentos frescos, accesibles y de calidad
+                Valor clave: Precios favorables, cercanía y consumo consciente
+              </span>
+            </div>
+          </div>
+
+          {/* Block 2: Tenderos */}
+          <div className="bg-white rounded-3xl p-8 border-2 border-[#00603F]/20 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+            <div>
+              <div className="flex items-center justify-between mb-6">
+                <div className="w-14 h-14 rounded-2xl bg-[#00603F] text-white flex items-center justify-center shadow-md">
+                  <Store className="w-7 h-7 text-[#FF9217]" />
+                </div>
+                <div className="flex items-center gap-1.5 text-xs font-bold text-[#00603F] bg-[#00603F]/10 px-3 py-1 rounded-full">
+                  <TrendingUp className="w-3.5 h-3.5" />
+                  <span>Comercio Local</span>
+                </div>
+              </div>
+
+              <h3 className="text-2xl font-extrabold text-[#00603F] mb-3">
+                Para los Tenderos
+              </h3>
+              <p className="text-neutral-600 text-sm mb-6 leading-relaxed">
+                Combina visibilidad digital y orientación práctica para aprovechar mejor cada producto
+                y generar nuevas oportunidades de venta.
+              </p>
+
+              <ul className="space-y-3.5">
+                {tenderosBenefits.map((benefit, idx) => (
+                  <li key={idx} className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-[#00603F] shrink-0 mt-0.5" />
+                    <span className="text-sm text-neutral-700 leading-snug font-medium">
+                      {benefit}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="mt-8 pt-6 border-t border-neutral-100">
+              <span className="text-xs font-bold text-[#00603F] block">
+                Valor clave: Nuevas ventas y recuperación de valor
               </span>
             </div>
           </div>
@@ -147,8 +146,8 @@ export const BenefitsSection: React.FC = () => {
                 Para el Medio Ambiente
               </h3>
               <p className="text-neutral-600 text-sm mb-6 leading-relaxed">
-                Cada alimento rescatado y consumido a tiempo previene emisiones innecesarias y
-                promueve la sostenibilidad del planeta.
+                Cada alimento aprovechado a tiempo evita que productos en buen estado terminen
+                desperdiciados.
               </p>
 
               <ul className="space-y-3.5">
@@ -165,7 +164,7 @@ export const BenefitsSection: React.FC = () => {
 
             <div className="mt-8 pt-6 border-t border-neutral-100">
               <span className="text-xs font-bold text-[#00603F] block">
-                Valor clave: Economía circular y protección de recursos
+                Valor clave: Aprovechamiento y consumo responsable
               </span>
             </div>
           </div>

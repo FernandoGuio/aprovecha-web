@@ -15,11 +15,11 @@ export const Navbar: React.FC = () => {
   }, []);
 
   const navLinks = [
-    { label: '¿Qué es?', href: '#que-es' },
+    { label: 'Solución', href: '#solucion' },
     { label: 'Cómo funciona', href: '#como-funciona' },
-    { label: 'Ofertas demo', href: '#ofertas' },
-    { label: 'Cerca de ti', href: '#cerca-de-ti' },
-    { label: 'Beneficios', href: '#beneficios' },
+    { label: 'Aprovechólogo', href: '#aprovechologo' },
+    { label: 'Planes', href: '#planes' },
+    { label: 'Ofertas', href: '#ofertas' },
   ];
 
   return (

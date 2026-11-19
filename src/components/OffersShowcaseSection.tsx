@@ -129,8 +129,8 @@ export const OffersShowcaseSection: React.FC = () => {
             Descubre cómo se ven las ofertas
           </h2>
           <p className="text-base sm:text-lg text-neutral-600 font-normal">
-            Así es como los compradores descubren y aprovechan oportunidades de ahorro en tiempo
-            real cerca de su casa.
+            Así es como los compradores descubren productos a precios favorables y oportunidades de
+            ahorro cerca de su hogar o restaurante.
           </p>
         </div>
 

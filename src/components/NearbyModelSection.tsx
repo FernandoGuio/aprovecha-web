@@ -284,9 +284,9 @@ export const NearbyModelSection: React.FC = () => {
                 </h3>
               </div>
               <p className="text-sm text-neutral-600 leading-relaxed">
-                Para quienes prefieran recibir en casa o restaurantes del sector, se prevé una tarifa
-                de domicilio máxima y accesible de $2.000 COP gestionada de manera ágil con repartidores
-                o personal del mismo vecindario.
+                Cuando el establecimiento cuente con servicio a domicilio, se prevé una tarifa
+                máxima y accesible de $2.000 COP para recibir productos en tu hogar o restaurante sin
+                complicaciones.
               </p>
             </div>
 

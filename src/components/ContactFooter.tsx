@@ -1,14 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Logo } from './Logo';
 import { Mail, Send, CheckCircle, ArrowRight, Instagram, Facebook, Linkedin, MessageCircle, Heart } from 'lucide-react';
 
-export const ContactFooter: React.FC = () => {
-  const [role, setRole] = useState<'tendero' | 'comprador'>('comprador');
+interface ContactFooterProps {
+  preferredRole?: 'tendero' | 'comprador';
+  selectedPlan?: string;
+}
+
+export const ContactFooter: React.FC<ContactFooterProps> = ({
+  preferredRole = 'tendero',
+  selectedPlan = '',
+}) => {
+  const [role, setRole] = useState<'tendero' | 'comprador'>(preferredRole);
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [neighborhood, setNeighborhood] = useState('');
+  const [planInterest, setPlanInterest] = useState(selectedPlan);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState('');
+
+  useEffect(() => {
+    setRole(preferredRole);
+  }, [preferredRole]);
+
+  useEffect(() => {
+    if (selectedPlan) {
+      setPlanInterest(selectedPlan);
+      setRole('tendero');
+    }
+  }, [selectedPlan]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,11 +42,12 @@ export const ContactFooter: React.FC = () => {
 
   const navLinks = [
     { label: 'Inicio', href: '#' },
-    { label: '¿Qué es Aprovecha?', href: '#que-es' },
+    { label: 'Nuestra solución', href: '#solucion' },
     { label: 'Cómo funciona', href: '#como-funciona' },
+    { label: 'Conoce al Aprovechólogo', href: '#aprovechologo' },
+    { label: 'Planes para tenderos', href: '#planes' },
     { label: 'Ofertas demostrativas', href: '#ofertas' },
-    { label: 'Modelo de proximidad', href: '#cerca-de-ti' },
-    { label: 'Beneficios del proyecto', href: '#beneficios' },
+    { label: 'Impacto y propósito', href: '#impacto' },
   ];
 
   return (
@@ -40,10 +61,11 @@ export const ContactFooter: React.FC = () => {
               Conexión y Contacto
             </span>
             <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#00603F] tracking-tight">
-              ¿Quieres ser parte del piloto en tu barrio?
+              ¿Quieres recibir orientación o unirte al piloto?
             </h3>
             <p className="text-neutral-600 text-sm sm:text-base mt-2">
-              Déjanos tus datos de contacto para enterarte del lanzamiento de la plataforma o para vincular tu tienda de barrio.
+              Déjanos tus datos de contacto para agendar una primera orientación gratuita para tu
+              tienda o para enterarte cuando lleguemos a tu barrio.
             </p>
           </div>
 
@@ -51,17 +73,6 @@ export const ContactFooter: React.FC = () => {
             <form onSubmit={handleSubmit} className="max-w-2xl mx-auto space-y-4">
               {/* Role Selector */}
               <div className="flex p-1 bg-[#FFFBED] rounded-xl border border-[#00603F]/20 mb-6">
-                <button
-                  type="button"
-                  onClick={() => setRole('comprador')}
-                  className={`flex-1 py-2.5 rounded-lg text-xs sm:text-sm font-bold transition-all cursor-pointer ${
-                    role === 'comprador'
-                      ? 'bg-[#FF9217] text-white shadow-xs'
-                      : 'text-neutral-700 hover:text-[#00603F]'
-                  }`}
-                >
-                  Soy Comprador / Hogar
-                </button>
                 <button
                   type="button"
                   onClick={() => setRole('tendero')}
@@ -73,7 +84,36 @@ export const ContactFooter: React.FC = () => {
                 >
                   Soy Tendero / Comercio
                 </button>
+                <button
+                  type="button"
+                  onClick={() => setRole('comprador')}
+                  className={`flex-1 py-2.5 rounded-lg text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                    role === 'comprador'
+                      ? 'bg-[#FF9217] text-white shadow-xs'
+                      : 'text-neutral-700 hover:text-[#00603F]'
+                  }`}
+                >
+                  Soy Comprador / Hogar
+                </button>
               </div>
+
+              {role === 'tendero' && (
+                <div>
+                  <label className="block text-xs font-bold text-neutral-700 uppercase tracking-wider mb-1.5">
+                    Plan o interés de acompañamiento
+                  </label>
+                  <select
+                    value={planInterest}
+                    onChange={(e) => setPlanInterest(e.target.value)}
+                    className="w-full px-4 py-3 rounded-xl border border-neutral-300 focus:border-[#00603F] focus:ring-2 focus:ring-[#00603F]/20 text-sm outline-hidden transition-all bg-white"
+                  >
+                    <option value="">Orientación inicial gratuita / Información general</option>
+                    <option value="Básico">Plan Básico – Gratis (Capacitación inicial incluida)</option>
+                    <option value="Crece">Plan Crece – Consultar condiciones</option>
+                    <option value="Preferente">Plan Preferente – Consultar condiciones</option>
+                  </select>
+                </div>
+              )}
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
@@ -129,7 +169,11 @@ export const ContactFooter: React.FC = () => {
                 type="submit"
                 className="w-full py-3.5 px-6 rounded-xl font-bold text-white bg-[#00603F] hover:bg-[#003824] active:scale-[0.99] shadow-md transition-all cursor-pointer flex items-center justify-center gap-2"
               >
-                <span>Registrar mi interés en Aprovecha</span>
+                <span>
+                  {role === 'tendero'
+                    ? 'Solicitar información y orientación gratuita'
+                    : 'Registrar mi interés en Aprovecha'}
+                </span>
                 <Send className="w-4 h-4 text-[#FF9217]" />
               </button>
 
@@ -146,7 +190,13 @@ export const ContactFooter: React.FC = () => {
                 ¡Gracias por tu interés en Aprovecha!
               </h4>
               <p className="text-sm text-neutral-600 mb-6">
-                Hemos registrado a <span className="font-bold text-neutral-900">{name || email}</span> con el rol de <span className="font-bold text-[#FF9217]">{role === 'tendero' ? 'Tendero' : 'Comprador'}</span> para el sector de {neighborhood || 'tu barrio'}. Te contactaremos con los avances del proyecto.
+                Hemos registrado a <span className="font-bold text-neutral-900">{name || email}</span>{' '}
+                con el rol de{' '}
+                <span className="font-bold text-[#FF9217]">
+                  {role === 'tendero' ? 'Tendero' : 'Comprador'}
+                </span>
+                {role === 'tendero' && planInterest ? ` (interés: Plan ${planInterest})` : ''} para el
+                sector de {neighborhood || 'tu barrio'}. Te contactaremos con los avances del proyecto.
               </p>
               <button
                 type="button"
@@ -175,13 +225,13 @@ export const ContactFooter: React.FC = () => {
               </div>
               
               <p className="text-[#FFFBED]/80 text-sm leading-relaxed mt-4 max-w-sm">
-                Iniciativa tecnológica que conecta tiendas de barrio con hogares y restaurantes para
-                facilitar la comercialización de alimentos próximos a su fecha de vencimiento a precios
-                especiales, evitando pérdidas y reduciendo el desperdicio.
+                Plataforma digital de apoyo a la gestión y comercialización de las tiendas de
+                barrio, que combina herramientas de visibilidad de productos con orientación práctica
+                para aprovechar mejor sus oportunidades de venta.
               </p>
             </div>
 
-            {/* Official Closing Message (Mandatory) */}
+            {/* Official Closing Message */}
             <div className="mt-6 pt-4 border-t border-white/10">
               <p className="text-sm font-extrabold text-[#FF9217] tracking-wide">
                 Aprovecha: ahorrar también es cuidar.
@@ -232,28 +282,28 @@ export const ContactFooter: React.FC = () => {
                 </p>
                 <div className="flex items-center gap-3">
                   <a
-                    href="#"
+                    href="#contacto"
                     aria-label="Instagram de Aprovecha"
                     className="w-9 h-9 rounded-xl bg-white/10 hover:bg-[#FF9217] text-white flex items-center justify-center transition-colors focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#FF9217]"
                   >
                     <Instagram className="w-4 h-4" />
                   </a>
                   <a
-                    href="#"
+                    href="#contacto"
                     aria-label="Facebook de Aprovecha"
                     className="w-9 h-9 rounded-xl bg-white/10 hover:bg-[#FF9217] text-white flex items-center justify-center transition-colors focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#FF9217]"
                   >
                     <Facebook className="w-4 h-4" />
                   </a>
                   <a
-                    href="#"
+                    href="#contacto"
                     aria-label="LinkedIn de Aprovecha"
                     className="w-9 h-9 rounded-xl bg-white/10 hover:bg-[#FF9217] text-white flex items-center justify-center transition-colors focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#FF9217]"
                   >
                     <Linkedin className="w-4 h-4" />
                   </a>
                   <a
-                    href="#"
+                    href="#contacto"
                     aria-label="WhatsApp de Aprovecha"
                     className="w-9 h-9 rounded-xl bg-white/10 hover:bg-[#FF9217] text-white flex items-center justify-center transition-colors focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#FF9217]"
                   >
